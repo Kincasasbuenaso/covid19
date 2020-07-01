@@ -1,0 +1,29 @@
+<div style="height: 80vh;">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>Covid-19</span>
+        <span class="menu-spacer"></span>
+        <div fxShow="true" fxHide.lt-md>
+          <a routerLink="/home" mat-button>Grafico</a>
+          <a routerLink="/contact" mat-button>Contacto</a>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  
+    <mat-sidenav-container fxFlexFill>
+      <mat-sidenav #sidenav>
+        <mat-nav-list>
+          <a (click)="sidenav.toggle()" routerLink="/home" mat-list-item>Close</a>
+          <a (click)="sidenav.toggle()" routerLink="/home" mat-list-item>Grafico</a>
+          <a (click)="sidenav.toggle()" routerLink="/contact" mat-list-item>Contacto</a>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content fxFlexFill>
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+  

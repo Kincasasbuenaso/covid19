@@ -1,0 +1,38 @@
+<div fxFlex fxLayout="column" fxLayoutGap="10px" style="height:100vh" class="container">
+    <h1 class="title">COVID-19</h1>
+    <div class="content">
+        <div class="flex">
+            <div class="flex-item">
+              <div style="display: block;">
+              <canvas baseChart width="400" height="400"
+                          [datasets]="lineChartData"
+                          [labels]="lineChartLabels"
+                          [options]="lineChartOptions"
+                          [colors]="lineChartColors"
+                          [legend]="lineChartLegend"
+                          [chartType]="lineChartType"
+                          [plugins]="lineChartPlugins"
+                          (chartHover)="chartHovered($event)"
+                          (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+            <div class="flex-item">
+              <table class="table table-responsive table-condensed">
+                <tr>
+                  <th *ngFor="let label of lineChartLabels">{{label}}</th>
+                </tr>
+                <tr *ngFor="let d of lineChartData; let i=index" [class]="'line-'+i">
+                  <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
+                </tr>
+              </table>
+              <button mat-button mat-raised-button color="primary" (click)="randomize()">Data Random</button>
+              <button mat-button mat-raised-button color="primary" (click)="pushOne()">Push</button>
+              <button mat-button mat-raised-button color="primary" (click)="hideSerie(1)">Colombia</button>
+              <button mat-button mat-raised-button color="primary" (click)="hideSerie(2)">Chile</button>
+              <button mat-button mat-raised-button color="primary" (click)="hideSerie(3)">Italia</button>
+              <button mat-button mat-raised-button color="primary" (click)="hideSerie(4)">Ecuador</button>
+              <button mat-button mat-raised-button color="primary" (click)="hideSerie(5)">EE.UU.</button>
+            </div>
+          </div>
+    </div>
+    </div>
